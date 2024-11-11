@@ -4,16 +4,17 @@ public class Vestuario extends Loja{
     private boolean produtosImportados;
 
     //construtor principal com informaçãp de salario base
-    public Vestuario(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, boolean produtosImportados) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Vestuario(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
+    Endereco endereco, Data dataFundacao, boolean produtosImportados, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco,
+        dataFundacao, quantidadeMaximaProdutos);
         this.produtosImportados = produtosImportados;
     }
 
     //construto de sobrecarga sem informação de salario base
     public Vestuario(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
-            boolean produtosImportados) {
-        super(nome, quantidadeFuncionarios, endereco, dataFundacao);
+    boolean produtosImportados, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.produtosImportados = produtosImportados;
     }
 

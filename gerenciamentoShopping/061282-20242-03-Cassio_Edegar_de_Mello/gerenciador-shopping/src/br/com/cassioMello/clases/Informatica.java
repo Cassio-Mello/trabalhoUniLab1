@@ -5,15 +5,15 @@ public class Informatica extends Loja{
 
     //construtor principal com informaçãp de salario base
     public Informatica(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, double seguroEletronicos) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+            Data dataFundacao, int quantidadeMaximaProdutos, double seguroEletronicos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.seguroEletronicos = seguroEletronicos;
     }
 
     //construto de sobrecarga sem informação de slario base
     public Informatica(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
-            double seguroEletronicos) {
-        super(nome, quantidadeFuncionarios, endereco, dataFundacao);
+            int quantidadeMaximaProdutos, double seguroEletronicos) {
+        super(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.seguroEletronicos = seguroEletronicos;
     }
 

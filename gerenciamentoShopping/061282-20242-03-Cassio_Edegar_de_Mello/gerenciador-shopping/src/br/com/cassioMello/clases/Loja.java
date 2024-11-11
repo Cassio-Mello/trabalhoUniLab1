@@ -6,23 +6,26 @@ public class Loja {
     private double salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
+    private Produto[] estoqueProdutos;
 
     //Contrutor com todos os atributos
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
     //construtor alternativo que recebe apenas nome e quantidade de funcionarios e adiciona -1 ao salario
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao ){
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
     //Métodos Getters and Setters
@@ -66,6 +69,13 @@ public class Loja {
         this.dataFundacao = dataDeFundacao;
     }
 
+    public Produto[] getEstoqueProdutos() {
+        return estoqueProdutos;
+    }
+
+    public void setEstoqueProdutos(Produto[] estoqueProdutos) {
+        this.estoqueProdutos = estoqueProdutos;
+    } 
 
     //Método toString
     @Override
@@ -96,6 +106,35 @@ public class Loja {
             return 'P'; //Pequeno
         }
 
+    }
+
+    //Método para listar array
+    public void imprimeProdutos(){
+        for (int i = 0; i < estoqueProdutos.length; i++){
+            System.out.println(i + "." + estoqueProdutos);
+        }
+    }
+
+    //Método para inserir produtos
+    public boolean insereProduto(String nome, Double preco, Data dataValidade){
+        for (int i = 0; i < estoqueProdutos.length; i++){
+            if (estoqueProdutos[i] == null){
+                estoqueProdutos[i] = new Produto(nome, preco, dataValidade);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //Método para remover produto
+    public boolean removeProduto(String nome){
+        for (int i = 0; i < estoqueProdutos.length; i++){
+            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equals(nome){
+                estoqueProdutos[i] = null;
+                return true;
+            }
+        }
+        return false;
     }
 
 

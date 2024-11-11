@@ -5,13 +5,14 @@ public class Alimentacao extends Loja{
 
     //construtor principal com informaçãp de salario base
     public Alimentacao(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, Data dataAlvara) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+            Data dataFundacao, Data dataAlvara, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.dataAlvara = dataAlvara;
     }
     //construto de sobrecarga sem informação de salario base
-    public Alimentacao(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, Data dataAlvara) {
-        super(nome, quantidadeFuncionarios, endereco, dataFundacao);
+    public Alimentacao(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
+            Data dataAlvara, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.dataAlvara = dataAlvara;
     }
 

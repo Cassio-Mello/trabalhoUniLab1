@@ -4,16 +4,17 @@ public class Cosmetico extends Loja {
     double taxaComercializacao;
 
     //construtor principal com informaçãp de salario base
-    public Cosmetico(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, double taxaComercializacao) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Cosmetico(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
+    Endereco endereco, Data dataFundacao, double taxaComercializacao, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco,
+        dataFundacao, quantidadeMaximaProdutos);
         this.taxaComercializacao = taxaComercializacao;
     }
 
     //construto de sobrecarga sem informação de salario base
-    public Cosmetico(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
-            double taxaComercializacao) {
-        super(nome, quantidadeFuncionarios, endereco, dataFundacao);
+    public Cosmetico(String nome, int quantidadeFuncionarios, Endereco endereco,
+    Data dataFundacao,double taxaComercializacao, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.taxaComercializacao = taxaComercializacao;
     }
 

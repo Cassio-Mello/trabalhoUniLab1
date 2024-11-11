@@ -51,6 +51,9 @@ public class Pricipal {
                 
                 System.out.println("\nSalário base: ");
                 double salarioBase = scanner.nextDouble();
+
+                System.out.println("\nInforme a qauntidade de produtos: ");
+                int quantidadeProdutos = scanner.nextInt();
                 
                 scanner.nextLine(); //consumir linha
             
@@ -98,10 +101,10 @@ public class Pricipal {
 
                 //selecionando o tipo do método construtor do objeto loja
                 if (salarioBase != 0){       
-                    loja = new Loja(nome, quantidadeFuncionarios, salarioBase, endereco, dataFundacao);
+                    loja = new Loja(nome, quantidadeFuncionarios, salarioBase, endereco, dataFundacao, quantidadeProdutos);
                 
                 }else{
-                    loja = new Loja(nome, quantidadeFuncionarios, endereco, dataFundacao);
+                    loja = new Loja(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeProdutos);
                 }
 
                 limparTela();
