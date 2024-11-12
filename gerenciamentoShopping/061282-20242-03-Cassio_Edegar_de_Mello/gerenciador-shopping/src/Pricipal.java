@@ -1,9 +1,15 @@
 import java.util.Scanner;
 
+import br.com.cassioMello.clases.Alimentacao;
+import br.com.cassioMello.clases.Bijuteria;
+import br.com.cassioMello.clases.Cosmetico;
 import br.com.cassioMello.clases.Data;
 import br.com.cassioMello.clases.Endereco;
+import br.com.cassioMello.clases.Informatica;
 import br.com.cassioMello.clases.Loja;
 import br.com.cassioMello.clases.Produto;
+import br.com.cassioMello.clases.Shopping;
+import br.com.cassioMello.clases.Vestuario;
 
 public class Pricipal {
     public static void main(String[] args) {
@@ -14,21 +20,24 @@ public class Pricipal {
         //variavel de opções do menu
         char opcao = ' ';
         
-        //iniciando objeto loja com valor null
+        //iniciando objetos com valor null
         Loja loja = null;
         Produto produto = null;
+        Shopping shopping = null;
         
         //laço para menu de seleção
-        while (opcao != '3'){
+        while (opcao != '4'){
 
             //menu
             System.out.println("\n...::Informe a opção Desejada::...");
             System.out.println("||||||||||||||||||||||||||||||||||");
-            System.out.println("||1.Criar loja                  ||");
+            System.out.println("||1.Cadastrar Shopping          ||");
             System.out.println("||                              ||");
-            System.out.println("||2.Criar produto               ||");
+            System.out.println("||2.Cadastrar Loja              ||");
             System.out.println("||                              ||");
-            System.out.println("||3.Sair                        ||");
+            System.out.println("||3.Criar produto               ||");
+            System.out.println("||                              ||");
+            System.out.println("||4.Sair                        ||");
             System.out.println("||||||||||||||||||||||||||||||||||");
 
             //variavel para receber a opção do menu
@@ -38,40 +47,14 @@ public class Pricipal {
             char opcaoDigitada = input.charAt(0);
 
             //condição para entrar no menu desejado e verificar a validade do que foi digitado
-            if (opcaoDigitada == '1'){//opção 1 entra no cadastro de Loja
+
+            if (opcaoDigitada == '1'){//opção 1 entra no cadastro de shopping
 
                 limparTela();
 
-                System.out.println("\n..::CADASTRO DE LOJA::..");
-                System.out.println("Nome da Loja: ");
-                String nome = scanner.nextLine();
-
-                System.out.println("\nQuatidade funcionários: ");
-                int quantidadeFuncionarios = scanner.nextInt();
-                
-                System.out.println("\nSalário base: ");
-                double salarioBase = scanner.nextDouble();
-
-                System.out.println("\nInforme a qauntidade de produtos: ");
-                int quantidadeProdutos = scanner.nextInt();
-                
-                scanner.nextLine(); //consumir linha
-            
-                System.out.println("\n..::Data de fundação::..");
-
-                System.out.println("Dia: ");
-                int dia = scanner.nextInt();
-                
-                System.out.println("Mês: ");
-                int mes = scanner.nextInt();
-                
-                System.out.println("Ano: ");
-                int ano = scanner.nextInt();
-
-                scanner.nextLine(); //consumir linha
-
-                //criando objeto dataFundacao
-                Data dataFundacao = new Data(dia, mes, ano);
+                System.out.println("...::CADASTRO DE SHOPPING::...");
+                System.out.println("Nome do novo shopping:");
+                String nomeShopping = scanner.nextLine();
 
                 System.out.println("..::Endereço::..");
 
@@ -99,26 +82,456 @@ public class Pricipal {
                 //criando objeto endereco
                 Endereco endereco = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
 
-                //selecionando o tipo do método construtor do objeto loja
-                if (salarioBase != 0){       
-                    loja = new Loja(nome, quantidadeFuncionarios, salarioBase, endereco, dataFundacao, quantidadeProdutos);
-                
-                }else{
-                    loja = new Loja(nome, quantidadeFuncionarios, endereco, dataFundacao, quantidadeProdutos);
+                System.out.println("Informe a quantidade de lojas:");
+                int qtdLojas = scanner.nextInt();
+
+                scanner.nextLine();
+
+                shopping = new Shopping(nomeShopping, endereco, qtdLojas);
+
+
+
+            }else if (opcaoDigitada == '2'){//opção 2 entra no cadastro de Loja
+
+                //verifica se tem shopping cadastrado para permitir cadastrar lojas
+                if (shopping == null){
+                    limparTela();
+
+                    System.out.println("   ..::ATENÇÃO! NENHUM SHOPPING CADASTRADO::..");
+                    System.out.println(">>>Cadastre um SHOPPING para cadastrar lojas!<<<");
+                    continue;
                 }
 
                 limparTela();
-                System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                continue;
+
+
+                char opcaoLoja = ' ';
                 
-            }else if (opcaoDigitada == '2'){//opçao 2 entra no cadastro de produtos
+                while (opcaoLoja != '4'){
+
+
+                    System.out.println("\n..::CADASTRO DE LOJA::..");
+                    System.out.println("\n...::Informe o tipo de Loja::...");
+                    System.out.println("||||||||||||||||||||||||||||||||||");
+                    System.out.println("||1.Alimentação                 ||");
+                    System.out.println("||                              ||");
+                    System.out.println("||2.Bijuteria                   ||");
+                    System.out.println("||                              ||");
+                    System.out.println("||3.Cosmético                   ||");
+                    System.out.println("||                              ||");
+                    System.out.println("||4.Informática                 ||");
+                    System.out.println("||                              ||");
+                    System.out.println("||5.Vestuário                   ||");
+                    System.out.println("||                              ||");
+                    System.out.println("||4.Sair                        ||");
+                    System.out.println("||||||||||||||||||||||||||||||||||");
+
+                    //variavel para receber a opção do menu
+                    String input2 = scanner.nextLine();
+
+                    //variavel char com funçao para pegar apenas o indice 0 do que foi digitado
+                    char opcaoLojaDigitada = input.charAt(0);
+
+                    if (opcaoLojaDigitada == '1'){
+
+
+                        System.out.println("Nome da Loja: ");
+                        String nomeLoja = scanner.nextLine();
+
+                        System.out.println("\nQuatidade funcionários: ");
+                        int quantidadeFuncionarios = scanner.nextInt();
+                
+                        System.out.println("\nSalário base: ");
+                        double salarioBase = scanner.nextDouble();
+
+                        System.out.println("\nInforme a qauntidade de produtos: ");
+                        int quantidadeProdutos = scanner.nextInt();
+
+                        System.out.println("\nInforme a data de válidade do alvará: ");
+                        System.out.println("Dia: ");
+                        int diaAlvara = scanner.nextInt();
+                        System.out.println("Mês: ");
+                        int mesAlvara = scanner.nextInt();
+                        System.out.println("Ano: ");
+                        int anoAlvara = scanner.nextInt();
+
+                        //Criando objeto dataAlvara
+                        Data dataAlvara = new Data(diaAlvara, mesAlvara, anoAlvara);
+                                        
+                        scanner.nextLine(); //consumir linha
+
+                        System.out.println("\n..::Data de fundação::..");
+
+                        System.out.println("Dia: ");
+                        int dia = scanner.nextInt();
+                
+                        System.out.println("Mês: ");
+                        int mes = scanner.nextInt();
+                
+                        System.out.println("Ano: ");
+                        int ano = scanner.nextInt();
+
+                        scanner.nextLine(); //consumir linha
+
+                        //criando objeto dataFundacao
+                        Data dataFundacao = new Data(dia, mes, ano);
+
+                        System.out.println("..::Endereço::..");
+
+                        System.out.println("Rua/Avenida: ");
+                        String nomeRua = scanner.nextLine();
+                
+                        System.out.println("\nCidade: ");
+                        String cidade = scanner.nextLine();
+                
+                        System.out.println("\nEstado: ");
+                        String estado = scanner.nextLine();
+                
+                        System.out.println("\nPaís: ");
+                        String pais = scanner.nextLine();
+                
+                        System.out.println("\nCEP: ");
+                        String cep = scanner.nextLine();
+                
+                        System.out.println("\nNúmero: ");
+                        String numero = scanner.nextLine();
+                
+                        System.out.println("\nComplemento: ");
+                        String complemento = scanner.nextLine();
+
+                        //criando objeto endereco
+                        Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                        //selecionando o tipo do método construtor do objeto loja
+                        if (salarioBase != 0){       
+                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, dataAlvara, ano);
+                
+                        }else{
+                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, dataAlvara, ano);
+                        }
+
+                        limparTela();
+                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                        continue; 
+
+                    }else if (opcaoLojaDigitada == '2'){
+
+                        System.out.println("Nome da Loja: ");
+                        String nomeLoja = scanner.nextLine();
+
+                        System.out.println("\nQuatidade funcionários: ");
+                        int quantidadeFuncionarios = scanner.nextInt();
+                
+                        System.out.println("\nSalário base: ");
+                        double salarioBase = scanner.nextDouble();
+
+                        System.out.println("\nInforme a qauntidade de produtos: ");
+                        int quantidadeProdutos = scanner.nextInt();
+
+                        System.out.println("\nInforme a meta de vendas: ");
+                        double metaVendas = scanner.nextDouble();
+                                        
+                        scanner.nextLine(); //consumir linha
+
+                        System.out.println("\n..::Data de fundação::..");
+
+                        System.out.println("Dia: ");
+                        int dia = scanner.nextInt();
+                
+                        System.out.println("Mês: ");
+                        int mes = scanner.nextInt();
+                
+                        System.out.println("Ano: ");
+                        int ano = scanner.nextInt();
+
+                        scanner.nextLine(); //consumir linha
+
+                        //criando objeto dataFundacao
+                        Data dataFundacao = new Data(dia, mes, ano);
+
+                        System.out.println("..::Endereço::..");
+
+                        System.out.println("Rua/Avenida: ");
+                        String nomeRua = scanner.nextLine();
+                
+                        System.out.println("\nCidade: ");
+                        String cidade = scanner.nextLine();
+                
+                        System.out.println("\nEstado: ");
+                        String estado = scanner.nextLine();
+                
+                        System.out.println("\nPaís: ");
+                        String pais = scanner.nextLine();
+                
+                        System.out.println("\nCEP: ");
+                        String cep = scanner.nextLine();
+                
+                        System.out.println("\nNúmero: ");
+                        String numero = scanner.nextLine();
+                
+                        System.out.println("\nComplemento: ");
+                        String complemento = scanner.nextLine();
+
+                        //criando objeto endereco
+                        Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                        //selecionando o tipo do método construtor do objeto loja
+                        if (salarioBase != 0){       
+                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, metaVendas, ano);
+                
+                        }else{
+                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, metaVendas, ano);
+                        }
+
+                        limparTela();
+                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                        continue; 
+                    }else if (opcaoLojaDigitada == '3'){
+
+
+                        System.out.println("Nome da Loja: ");
+                        String nomeLoja = scanner.nextLine();
+
+                        System.out.println("\nQuatidade funcionários: ");
+                        int quantidadeFuncionarios = scanner.nextInt();
+                
+                        System.out.println("\nSalário base: ");
+                        double salarioBase = scanner.nextDouble();
+
+                        System.out.println("\nInforme a qauntidade de produtos: ");
+                        int quantidadeProdutos = scanner.nextInt();
+
+                        System.out.println("\nInforme a taxa de comercialização: ");
+                        double taxaComercializacao = scanner.nextDouble();
+                                        
+                        scanner.nextLine(); //consumir linha
+
+                        System.out.println("\n..::Data de fundação::..");
+
+                        System.out.println("Dia: ");
+                        int dia = scanner.nextInt();
+                
+                        System.out.println("Mês: ");
+                        int mes = scanner.nextInt();
+                
+                        System.out.println("Ano: ");
+                        int ano = scanner.nextInt();
+
+                        scanner.nextLine(); //consumir linha
+
+                        //criando objeto dataFundacao
+                        Data dataFundacao = new Data(dia, mes, ano);
+
+                        System.out.println("..::Endereço::..");
+
+                        System.out.println("Rua/Avenida: ");
+                        String nomeRua = scanner.nextLine();
+                
+                        System.out.println("\nCidade: ");
+                        String cidade = scanner.nextLine();
+                
+                        System.out.println("\nEstado: ");
+                        String estado = scanner.nextLine();
+                
+                        System.out.println("\nPaís: ");
+                        String pais = scanner.nextLine();
+                
+                        System.out.println("\nCEP: ");
+                        String cep = scanner.nextLine();
+                
+                        System.out.println("\nNúmero: ");
+                        String numero = scanner.nextLine();
+                
+                        System.out.println("\nComplemento: ");
+                        String complemento = scanner.nextLine();
+
+                        //criando objeto endereco
+                        Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                        //selecionando o tipo do método construtor do objeto loja
+                        if (salarioBase != 0){       
+                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, taxaComercializacao, ano);
+                
+                        }else{
+                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, taxaComercializacao, ano);
+                        }
+
+                        limparTela();
+                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                        continue; 
+                    }else if (opcaoLojaDigitada == '4'){
+
+
+                        System.out.println("Nome da Loja: ");
+                        String nomeLoja = scanner.nextLine();
+
+                        System.out.println("\nQuatidade funcionários: ");
+                        int quantidadeFuncionarios = scanner.nextInt();
+                
+                        System.out.println("\nSalário base: ");
+                        double salarioBase = scanner.nextDouble();
+
+                        System.out.println("\nInforme a qauntidade de produtos: ");
+                        int quantidadeProdutos = scanner.nextInt();
+
+                        System.out.println("\nInforme o valor do seguro: ");
+                        double valorSeguro = scanner.nextDouble();
+                                        
+                        scanner.nextLine(); //consumir linha
+
+                        System.out.println("\n..::Data de fundação::..");
+
+                        System.out.println("Dia: ");
+                        int dia = scanner.nextInt();
+                
+                        System.out.println("Mês: ");
+                        int mes = scanner.nextInt();
+                
+                        System.out.println("Ano: ");
+                        int ano = scanner.nextInt();
+
+                        scanner.nextLine(); //consumir linha
+
+                        //criando objeto dataFundacao
+                        Data dataFundacao = new Data(dia, mes, ano);
+
+                        System.out.println("..::Endereço::..");
+
+                        System.out.println("Rua/Avenida: ");
+                        String nomeRua = scanner.nextLine();
+                
+                        System.out.println("\nCidade: ");
+                        String cidade = scanner.nextLine();
+                
+                        System.out.println("\nEstado: ");
+                        String estado = scanner.nextLine();
+                
+                        System.out.println("\nPaís: ");
+                        String pais = scanner.nextLine();
+                
+                        System.out.println("\nCEP: ");
+                        String cep = scanner.nextLine();
+                
+                        System.out.println("\nNúmero: ");
+                        String numero = scanner.nextLine();
+                
+                        System.out.println("\nComplemento: ");
+                        String complemento = scanner.nextLine();
+
+                        //criando objeto endereco
+                        Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                        //selecionando o tipo do método construtor do objeto loja
+                        if (salarioBase != 0){       
+                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, ano, ano);
+                
+                        }else{
+                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, ano, ano);
+                        }
+
+                        limparTela();
+                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                        continue; 
+                    }
+                    if (opcaoLojaDigitada == '5'){
+
+
+                        System.out.println("Nome da Loja: ");
+                        String nomeLoja = scanner.nextLine();
+
+                        System.out.println("\nQuatidade funcionários: ");
+                        int quantidadeFuncionarios = scanner.nextInt();
+                
+                        System.out.println("\nSalário base: ");
+                        double salarioBase = scanner.nextDouble();
+
+                        System.out.println("\nInforme a qauntidade de produtos: ");
+                        int quantidadeProdutos = scanner.nextInt();
+
+                        System.out.println("\nInforme se comercializa produtos importados:[S]im ou [N]ão ");
+                        String importadoSimNao = scanner.nextLine();
+                        boolean produtoImportado;
+                        if (importadoSimNao.equalsIgnoreCase("S")){
+                            produtoImportado = true;
+                        }else{
+                            produtoImportado = false;
+                        }
+
+                        System.out.println("\n..::Data de fundação::..");
+
+                        System.out.println("Dia: ");
+                        int dia = scanner.nextInt();
+                
+                        System.out.println("Mês: ");
+                        int mes = scanner.nextInt();
+                
+                        System.out.println("Ano: ");
+                        int ano = scanner.nextInt();
+
+                        scanner.nextLine(); //consumir linha
+
+                        //criando objeto dataFundacao
+                        Data dataFundacao = new Data(dia, mes, ano);
+
+                        System.out.println("..::Endereço::..");
+
+                        System.out.println("Rua/Avenida: ");
+                        String nomeRua = scanner.nextLine();
+                
+                        System.out.println("\nCidade: ");
+                        String cidade = scanner.nextLine();
+                
+                        System.out.println("\nEstado: ");
+                        String estado = scanner.nextLine();
+                
+                        System.out.println("\nPaís: ");
+                        String pais = scanner.nextLine();
+                
+                        System.out.println("\nCEP: ");
+                        String cep = scanner.nextLine();
+                
+                        System.out.println("\nNúmero: ");
+                        String numero = scanner.nextLine();
+                
+                        System.out.println("\nComplemento: ");
+                        String complemento = scanner.nextLine();
+
+                        //criando objeto endereco
+                        Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                        //selecionando o tipo do método construtor do objeto loja
+                        if (salarioBase != 0){       
+                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, produtoImportado, ano);
+                
+                        }else{
+                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, produtoImportado, ano);
+                        }
+
+                        limparTela();
+                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                        continue; 
+                    }else if (opcaoDigitada == '4'){//opção 3 sai do programa
+
+                        limparTela();
+                        System.out.println("\n   ..::Você saiu do Cadastro de Lojas!::..");
+                        opcaoLoja = opcaoLojaDigitada;
+                    
+                
+                    }else{ //exibe mensagem se a opção digitada é inválida
+                        limparTela();
+                        System.out.println("\n     ..::OPÇÃO INVÁLIDA::..\n");
+                        continue;
+                    }
+                }               
+                
+            }else if (opcaoDigitada == '3'){//opçao 2 entra no cadastro de produtos
 
                 //verifica se tem loja cadastrada para permitir cadastrar produtos
                 if (loja == null){
                     limparTela();
 
                     System.out.println("   ..::ATENÇÃO! NENHUMA LOJA CADASTRADA::..");
-                    System.out.println(">>>Cadastre uma loja para cadastrar produtos!<<<");
+                    System.out.println(">>>Cadastre uma LOJA para cadastrar produtos!<<<");
                     continue;
                 }
 
@@ -168,11 +581,13 @@ public class Pricipal {
 
                 continue;
             
-            }else if (opcaoDigitada == '3'){//opção 3 sai do programa
+            
+            }else if (opcaoDigitada == '4'){//opção 3 sai do programa
 
                 limparTela();
-                System.out.println("\n   ..::Você saiu do sitema!::..");
+                System.out.println("\n   ..::Você saiu do Cadastro de Lojas!::..");
                 opcao = opcaoDigitada;
+                
             
             }else{ //exibe mensagem se a opção digitada é inválida
                 limparTela();

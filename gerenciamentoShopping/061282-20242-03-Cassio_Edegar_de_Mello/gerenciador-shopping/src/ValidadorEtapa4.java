@@ -210,6 +210,10 @@ public class ValidadorEtapa4 {
 		boolean prod3 = loja2.insereProduto(new Produto("Pipoca caramelo", 5, new Data(12,5,2023)));
 		System.out.println(!prod3 ? "[OK] Método Loja.insereProduto() - não permitiu inclusão de item quando array cheio" : "[NOK] Método Loja.insereProduto() - permitiu inclusão de item quando array cheio");
 		
+		
+		loja2.imprimeProdutos();
+		System.out.println("[OK] Método Loja.imprimeProdutos()");
+
 		//public boolean removeProduto(String nomeProduto)
 		boolean rem1 = loja2.removeProduto("Pipoca salgada");
 		System.out.println(rem1 ? "[OK] Método Loja.removeProduto()" : "[NOK] Método Loja.removeProduto()");

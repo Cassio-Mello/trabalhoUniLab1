@@ -64,10 +64,45 @@ public class Shopping {
     }
 
     //Método lojas por tipo
-    public void quantidadeLojasPorTipo(String tipoLoja){
-        for (int i = 0; i < lojas.length; i++){
+    public int quantidadeLojasPorTipo(String tipoLoja){
+        int contador =0;
+
+        for (Loja loja : lojas){
+            if (tipoLoja.equalsIgnoreCase("Alimentação") && loja instanceof Alimentacao){
+                contador++;
+            }else if (tipoLoja.equalsIgnoreCase("Bijuteria") && loja instanceof Bijuteria){
+                contador++;
+            }else if (tipoLoja.equalsIgnoreCase("Cosmético") && loja instanceof Cosmetico){
+                contador++;
+            }else if (tipoLoja.equalsIgnoreCase("Informática") && loja instanceof Informatica){
+                contador++;
+            }else if (tipoLoja.equalsIgnoreCase("Vestuário") && loja instanceof Vestuario){
+                contador++;
+            }  
             
         }
+        if (contador == 0){
+            return -1;
+        }
+
+        return contador;
+    }
+
+    //Método para encontrar a loja com o seguro mais caro
+    public Informatica lojaSeguroMaisCaro(){
+        Informatica lojaMaisCaro = null;
+        double maiorSeguro = 0;
+
+        for (Loja loja : lojas){
+            if (loja instanceof Informatica){
+                Informatica lojaInformatica = (Informatica) loja;
+                if (lojaInformatica.getSeguroEletronicos() > maiorSeguro){
+                    maiorSeguro = lojaInformatica.getSeguroEletronicos();
+                    lojaMaisCaro = lojaInformatica;
+                }
+            }
+        }
+        return lojaMaisCaro;
     }
     
 

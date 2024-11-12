@@ -44,7 +44,7 @@ public class Produto {
     //sobrescrevendo toString
     @Override
     public String toString(){
-        return "\nProduto: " + getNome() + "   Preço: " + String.format("R$%.2f", getPreco())
+        return "Produto: " + getNome() + "   Preço: " + String.format("R$%.2f", getPreco())
                 + "\nData de válidade: " + dataValidade.toString(); 
     }
 

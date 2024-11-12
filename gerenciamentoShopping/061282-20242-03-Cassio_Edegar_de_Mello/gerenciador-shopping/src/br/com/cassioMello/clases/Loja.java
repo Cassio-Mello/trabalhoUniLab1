@@ -111,7 +111,11 @@ public class Loja {
     //Método para listar array
     public void imprimeProdutos(){
         for (int i = 0; i < estoqueProdutos.length; i++){
-            System.out.println(i + "." + estoqueProdutos);
+            if (estoqueProdutos[i] != null){
+                System.out.println(i + ". " + estoqueProdutos[i].toString());
+            }else{
+               System.out.println(i + ". VAZIO");
+            }
         }
     }
 
