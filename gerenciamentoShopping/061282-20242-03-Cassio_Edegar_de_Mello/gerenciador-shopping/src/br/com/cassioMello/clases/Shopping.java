@@ -40,6 +40,35 @@ public class Shopping {
         
     }
 
+    //Método para inserir lojas
+    public boolean insereLoja(Loja loja){
+        for (int i = 0; i < lojas.length; i++){
+            if (lojas[i] == null){
+                lojas[i] = loja;
+                return true;            
+            }
+        }
+        return false;
+    }
     
+
+    //Método para remover lojas
+    public boolean removeLoja(String nome){
+        for (int i = 0; i < lojas.length; i++){
+            if (lojas[i] != null && lojas[i].getNome().equals(nome)){
+                lojas[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Método lojas por tipo
+    public void quantidadeLojasPorTipo(String tipoLoja){
+        for (int i = 0; i < lojas.length; i++){
+            
+        }
+    }
     
+
 }

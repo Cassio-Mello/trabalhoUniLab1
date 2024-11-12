@@ -116,10 +116,10 @@ public class Loja {
     }
 
     //Método para inserir produtos
-    public boolean insereProduto(String nome, Double preco, Data dataValidade){
+    public boolean insereProduto(Produto produto){
         for (int i = 0; i < estoqueProdutos.length; i++){
             if (estoqueProdutos[i] == null){
-                estoqueProdutos[i] = new Produto(nome, preco, dataValidade);
+                estoqueProdutos[i] = produto;
                 return true;
             }
         }
@@ -129,13 +129,15 @@ public class Loja {
     //Método para remover produto
     public boolean removeProduto(String nome){
         for (int i = 0; i < estoqueProdutos.length; i++){
-            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equals(nome){
+            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equals(nome)){
                 estoqueProdutos[i] = null;
                 return true;
             }
         }
         return false;
     }
+
+
 
 
 }

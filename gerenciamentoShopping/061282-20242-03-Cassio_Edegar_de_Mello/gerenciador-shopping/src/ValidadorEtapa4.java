@@ -6,6 +6,7 @@ import br.com.cassioMello.clases.Endereco;
 import br.com.cassioMello.clases.Informatica;
 import br.com.cassioMello.clases.Loja;
 import br.com.cassioMello.clases.Produto;
+import br.com.cassioMello.clases.Shopping;
 import br.com.cassioMello.clases.Vestuario;
 
 public class ValidadorEtapa4 {
@@ -198,12 +199,12 @@ public class ValidadorEtapa4 {
 		System.out.println("[OK] Método Loja.imprimeProdutos()");
 		
 		//public boolean insereProduto(Produto p);
-		boolean prod1 = loja2.insereProduto(new Produto("Pipoca doce", 5, new Data(10,5,2023)));
+		boolean prod1 = loja2.insereProduto(new Produto("Pipoca doce", 5.0, new Data(10,5,2023)));
 		System.out.println(prod1 ? "[OK] Método Loja.insereProduto() - inclusão de um produto" : "[NOK] Método Loja.insereProduto() - não deixou incluir um produto");
 
 		System.out.println(loja2.getEstoqueProdutos()[1] == null ? "[OK] Método Loja.insereProduto() - restante do array permanece vazio" : "[NOK] Método Loja.insereProduto() - ao incluir um produto, mexeu nas demais posições do array");
 
-		boolean prod2 = loja2.insereProduto(new Produto("Pipoca salgada", 4, new Data(15,5,2023)));
+		boolean prod2 = loja2.insereProduto(new Produto("Pipoca salgada", 4.0, new Data(15,5,2023)));
 		System.out.println((prod1 && prod2) ? "[OK] Método Loja.insereProduto() - inclusão de dois produtos" : "[NOK] Método Loja.insereProduto() - não deixou incluir dois produtos");
 
 		boolean prod3 = loja2.insereProduto(new Produto("Pipoca caramelo", 5, new Data(12,5,2023)));
