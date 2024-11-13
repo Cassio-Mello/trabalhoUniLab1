@@ -107,7 +107,7 @@ public class Pricipal {
 
                 char opcaoLoja = ' ';
                 
-                while (opcaoLoja != '4'){
+                while (opcaoLoja != '6'){
 
 
                     System.out.println("\n..::CADASTRO DE LOJA::..");
@@ -123,17 +123,16 @@ public class Pricipal {
                     System.out.println("||                              ||");
                     System.out.println("||5.Vestuário                   ||");
                     System.out.println("||                              ||");
-                    System.out.println("||4.Sair                        ||");
+                    System.out.println("||6.Sair                        ||");
                     System.out.println("||||||||||||||||||||||||||||||||||");
 
                     //variavel para receber a opção do menu
                     String input2 = scanner.nextLine();
 
                     //variavel char com funçao para pegar apenas o indice 0 do que foi digitado
-                    char opcaoLojaDigitada = input.charAt(0);
+                    char opcaoLojaDigitada = input2.charAt(0);
 
                     if (opcaoLojaDigitada == '1'){
-
 
                         System.out.println("Nome da Loja: ");
                         String nomeLoja = scanner.nextLine();
@@ -204,15 +203,21 @@ public class Pricipal {
 
                         //selecionando o tipo do método construtor do objeto loja
                         if (salarioBase != 0){       
-                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, dataAlvara, ano);
+                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, dataAlvara, quantidadeProdutos);
                 
                         }else{
-                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, dataAlvara, ano);
+                            loja = new Alimentacao(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, dataAlvara, quantidadeProdutos);
                         }
 
-                        limparTela();
-                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                        continue; 
+
+                        if (shopping.insereLoja(loja) == true){                        
+                            limparTela();
+                            System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                            continue;
+                        }else{
+                            System.out.println("Não existe espaço disponivél para cadastrar nova loja");
+                            continue;
+                        } 
 
                     }else if (opcaoLojaDigitada == '2'){
 
@@ -277,15 +282,20 @@ public class Pricipal {
 
                         //selecionando o tipo do método construtor do objeto loja
                         if (salarioBase != 0){       
-                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, metaVendas, ano);
+                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, metaVendas, quantidadeProdutos);
                 
                         }else{
-                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, metaVendas, ano);
+                            loja = new Bijuteria(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, metaVendas, quantidadeProdutos);
                         }
 
-                        limparTela();
-                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                        continue; 
+                        if (shopping.insereLoja(loja) == true){                        
+                            limparTela();
+                            System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                            continue;
+                        }else{
+                            System.out.println("Não existe espaço disponivél para cadastrar nova loja");
+                            continue;
+                        }
                     }else if (opcaoLojaDigitada == '3'){
 
 
@@ -350,15 +360,20 @@ public class Pricipal {
 
                         //selecionando o tipo do método construtor do objeto loja
                         if (salarioBase != 0){       
-                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, taxaComercializacao, ano);
+                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, taxaComercializacao, quantidadeProdutos);
                 
                         }else{
-                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, taxaComercializacao, ano);
+                            loja = new Cosmetico(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, taxaComercializacao, quantidadeProdutos);
                         }
 
-                        limparTela();
-                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                        continue; 
+                        if (shopping.insereLoja(loja) == true){                        
+                            limparTela();
+                            System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                            continue;
+                        }else{
+                            System.out.println("Não existe espaço disponivél para cadastrar nova loja");
+                            continue;
+                        }
                     }else if (opcaoLojaDigitada == '4'){
 
 
@@ -423,15 +438,20 @@ public class Pricipal {
 
                         //selecionando o tipo do método construtor do objeto loja
                         if (salarioBase != 0){       
-                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, ano, ano);
+                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, quantidadeProdutos, valorSeguro);
                 
                         }else{
-                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, ano, ano);
+                            loja = new Informatica(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, quantidadeProdutos, valorSeguro);
                         }
 
-                        limparTela();
-                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                        continue; 
+                        if (shopping.insereLoja(loja) == true){                        
+                            limparTela();
+                            System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                            continue;
+                        }else{
+                            System.out.println("Não existe espaço disponivél para cadastrar nova loja");
+                            continue;
+                        } 
                     }
                     if (opcaoLojaDigitada == '5'){
 
@@ -501,16 +521,22 @@ public class Pricipal {
 
                         //selecionando o tipo do método construtor do objeto loja
                         if (salarioBase != 0){       
-                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, produtoImportado, ano);
+                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, salarioBase, enderecoLoja, dataFundacao, produtoImportado, quantidadeProdutos);
                 
                         }else{
-                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, produtoImportado, ano);
+                            loja = new Vestuario(nomeLoja, quantidadeFuncionarios, enderecoLoja, dataFundacao, produtoImportado, quantidadeProdutos);
                         }
 
-                        limparTela();
-                        System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
-                        continue; 
-                    }else if (opcaoDigitada == '4'){//opção 3 sai do programa
+                        if (shopping.insereLoja(loja) == true){                        
+                            limparTela();
+                            System.out.println("..::LOJA CADASTRADA COM SUCESSO::..\n");
+                            continue;
+                        }else{
+                            System.out.println("Não existe espaço disponivél para cadastrar nova loja");
+                            continue;
+                        }
+
+                    }else if (opcaoLojaDigitada == '6'){//opção 6 sai do cadastro de lojas1
 
                         limparTela();
                         System.out.println("\n   ..::Você saiu do Cadastro de Lojas!::..");
@@ -535,37 +561,54 @@ public class Pricipal {
                     continue;
                 }
 
-                limparTela();
+                System.out.println("Informe o nome da loja para qual deseja cadastrar produtos: ");
+                String nomeLoja = scanner.nextLine();
 
-                System.out.println("\n..::CADASTRO DE PRODUTOS::..");
-                System.out.println("Produto: ");
-                String nomeProduto = scanner.nextLine();
+                Loja lojaSelecionada = shopping.buscarLoja(nomeLoja);
+
+                if (lojaSelecionada == null){
+                    System.out.println("Loja não encontrada! Verifique o nome informado");
+
+                }else{
+
+                    limparTela();
+
+                    System.out.println("\n..::CADASTRO DE PRODUTOS::..");
+                    System.out.println("Produto: ");
+                    String nomeProduto = scanner.nextLine();
                
-                System.out.println("Preço: ");
-                double preco = scanner.nextDouble();
+                    System.out.println("Preço: ");
+                    double preco = scanner.nextDouble();
 
-                scanner.nextLine(); //consumir linha
+                    scanner.nextLine(); //consumir linha
 
-                System.out.println("..::Data de Validade::..");
-                System.out.println("Dia: ");
-                int dia = scanner.nextInt();
+                    System.out.println("..::Data de Validade::..");
+                    System.out.println("Dia: ");
+                    int dia = scanner.nextInt();
                
-                System.out.println("Mês: ");
-                int mes = scanner.nextInt();
+                    System.out.println("Mês: ");
+                    int mes = scanner.nextInt();
                
-                System.out.println("Ano: ");
-                int ano = scanner.nextInt();
+                    System.out.println("Ano: ");
+                    int ano = scanner.nextInt();
 
-                scanner.nextLine(); //consumir linha
+                    scanner.nextLine(); //consumir linha
 
-                //criando objeto dataValidade
-                Data dataValidade = new Data(dia, mes, ano);
+                    //criando objeto dataValidade
+                    Data dataValidade = new Data(dia, mes, ano);
 
-                //criando objeto produto
-                produto = new Produto(nomeProduto, preco, dataValidade);
+                    //criando objeto produto
+                    produto = new Produto(nomeProduto, preco, dataValidade);
 
+                    if (lojaSelecionada.insereProduto(produto)){
+                        System.out.println("Produto cadastrado com sucesso na loja " + lojaSelecionada.getNome());
+
+                    }else{
+                        System.out.println("...::ATENÇÃO ESTOQUE CHEIO::..\n Não existe espaço vazio para cadastrar novos produtos");
+                    }
+                }        
                 
-                limparTela();
+                    limparTela();
                 //imprimindo dados da loja e produto cadastrados
                 System.out.println(loja);
 
@@ -585,7 +628,7 @@ public class Pricipal {
             }else if (opcaoDigitada == '4'){//opção 3 sai do programa
 
                 limparTela();
-                System.out.println("\n   ..::Você saiu do Cadastro de Lojas!::..");
+                System.out.println("\n   ..::Você saiu do Sistema::..");
                 opcao = opcaoDigitada;
                 
             
@@ -608,4 +651,5 @@ public class Pricipal {
            System.out.println();
         }
     }
+
 }

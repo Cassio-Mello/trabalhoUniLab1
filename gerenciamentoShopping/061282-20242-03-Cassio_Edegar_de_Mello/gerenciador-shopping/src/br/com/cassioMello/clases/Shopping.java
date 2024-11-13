@@ -104,6 +104,17 @@ public class Shopping {
         }
         return lojaMaisCaro;
     }
+
+    //Método buscar loja
+    public Loja buscarLoja(String nome) {
+        for (Loja loja : lojas) {
+            if (loja != null && loja.getNome().equalsIgnoreCase(nome)) {
+                return loja;
+            }
+        }
+        return null; // Retorna null se a loja não for encontrada
+    }
+    
     
 
 }
